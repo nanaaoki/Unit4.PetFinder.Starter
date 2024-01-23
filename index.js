@@ -30,11 +30,11 @@ app.get("/api/v1/pets", (req, res) => {
 // get pet by owner with query string
 app.get("/api/v1/pets/owner", (req, res) => {
   // get the owner from the request
-  const ownerName = req.query.owner;
+  const ownerName = req.query.owner.toLowerCase();
 
   // find the pet in the pets array
   const pet = pets.filter((pet) => 
-    pet.ownerName.includes(ownerName));
+    pet.owner.toLowerCase().includes(ownerName));
 
   // send the pet as a response
   res.send(pet);
